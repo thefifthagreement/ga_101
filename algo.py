@@ -50,7 +50,7 @@ def generation(population):
 
 def algorithm():
     chrom_size = answer_len()
-    population_size = 50
+    population_size = 20
     max_iter = 100
     iteration = 0
     max_score = 0.0
@@ -71,7 +71,8 @@ def algorithm():
         score = get_mean_score(population)
         max_score = max(max_score, score)
 
-        print(f'iteration {iteration}: {score:.2%}')
+        if iteration % 50 == 0:
+            print(f'generation {iteration}: {score:.2%}')
     
         # check if a solution has been found
         for chrom in population:
@@ -80,9 +81,9 @@ def algorithm():
     
     # print the solution
     if answers:
-        print(f"well done the answer is found at iteration {iteration}:\n{answers[0]}")
+        print(f"Well done the answer was found at iteration {iteration}:\n{answers[0]}")
     else:
-        print(f"no solution found... (best score {max_score:.2%})")
+        print(f"No solution found... (best score {max_score:.2%})")
 
 
 if __name__ == "__main__":
